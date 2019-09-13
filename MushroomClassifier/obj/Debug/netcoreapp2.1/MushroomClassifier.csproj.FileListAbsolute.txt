@@ -1,0 +1,11 @@
+C:\Users\dkumar\Documents\Deepak_ML\MushroomClassifier\obj\Debug\netcoreapp2.1\MushroomClassifier.csproj.CoreCompileInputs.cache
+C:\Users\dkumar\Documents\Deepak_ML\MushroomClassifier\obj\Debug\netcoreapp2.1\MushroomClassifier.AssemblyInfoInputs.cache
+C:\Users\dkumar\Documents\Deepak_ML\MushroomClassifier\obj\Debug\netcoreapp2.1\MushroomClassifier.AssemblyInfo.cs
+C:\Users\dkumar\Documents\Deepak_ML\MushroomClassifier\bin\Debug\netcoreapp2.1\MushroomClassifier.deps.json
+C:\Users\dkumar\Documents\Deepak_ML\MushroomClassifier\bin\Debug\netcoreapp2.1\MushroomClassifier.runtimeconfig.json
+C:\Users\dkumar\Documents\Deepak_ML\MushroomClassifier\bin\Debug\netcoreapp2.1\MushroomClassifier.runtimeconfig.dev.json
+C:\Users\dkumar\Documents\Deepak_ML\MushroomClassifier\bin\Debug\netcoreapp2.1\MushroomClassifier.dll
+C:\Users\dkumar\Documents\Deepak_ML\MushroomClassifier\bin\Debug\netcoreapp2.1\MushroomClassifier.pdb
+C:\Users\dkumar\Documents\Deepak_ML\MushroomClassifier\obj\Debug\netcoreapp2.1\MushroomClassifier.dll
+C:\Users\dkumar\Documents\Deepak_ML\MushroomClassifier\obj\Debug\netcoreapp2.1\MushroomClassifier.pdb
+C:\Users\dkumar\Documents\Deepak_ML\MushroomClassifier\obj\Debug\netcoreapp2.1\MushroomClassifier.csprojAssemblyReference.cache
