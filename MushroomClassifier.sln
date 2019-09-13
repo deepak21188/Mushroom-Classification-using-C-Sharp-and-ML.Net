@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MushroomClassifier", "MushroomClassifier\MushroomClassifier.csproj", "{781E437D-C852-495F-B22B-6AC9C005509B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MushroomClassifier", "MushroomClassifier\MushroomClassifier.csproj", "{781E437D-C852-495F-B22B-6AC9C005509B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{00E22AB5-0E51-44F4-8D14-E2A34B083503}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

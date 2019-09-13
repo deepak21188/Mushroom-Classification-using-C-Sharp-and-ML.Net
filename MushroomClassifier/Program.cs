@@ -104,6 +104,7 @@ namespace MushroomClassifier
 
         public static TrainTestData LoadData(MLContext mlContext, double testDataFraction)
         {
+            //Read data
             IDataView mushroomDataView = mlContext.Data.LoadFromTextFile<MushroomModelInput>(_dataFilePath, hasHeader: true, separatorChar: ',', allowSparse: false);
 
             TrainTestData mushroomTrainTestData = mlContext.Data.TrainTestSplit(mushroomDataView, testFraction: testDataFraction);
@@ -151,20 +152,17 @@ namespace MushroomClassifier
 
         public static ITransformer BuildAndTrain(MLContext mlContext, IEstimator<ITransformer> pipeline, IDataView trainDataView)
         {
-          
-         //   PeekDataViewInConsole(mlContext, trainDataView, pipeline, 2);
-                      
 
-            Console.WriteLine("=============== Create and Train the Model ===============");
-            var averagedPerceptronBinaryTrainer = mlContext.BinaryClassification.Trainers.AveragedPerceptron("Label", "Features", numberOfIterations: 10);
-            
-            var trainPipeline = pipeline.Append(mlContext.MulticlassClassification.Trainers.OneVersusAll(averagedPerceptronBinaryTrainer))
+            //   PeekDataViewInConsole(mlContext, trainDataView, pipeline, 2);
+
+
+
+            Console.WriteLine("=============== Starting 10 fold cross validation ===============");
+            var trainPipeline = pipeline.Append(mlContext.MulticlassClassification.Trainers.OneVersusAll(mlContext.BinaryClassification.Trainers.AveragedPerceptron("Label", "Features", numberOfIterations: 10)))
                                         .Append(mlContext.Transforms.Conversion.MapKeyToValue("PredictedLabel"));
 
-            //var transformer = pipeline.Fit(trainDataView);
-            //var transformedData = transformer.Transform(trainDataView);
 
-            var crossValResults = mlContext.MulticlassClassification.CrossValidate(data: trainDataView, estimator: trainPipeline, numberOfFolds: 6, labelColumnName: "Label");
+            var crossValResults = mlContext.MulticlassClassification.CrossValidate(data: trainDataView, estimator: trainPipeline, numberOfFolds: 10, labelColumnName: "Label");
 
             var metricsInMultipleFolds = crossValResults.Select(r => r.Metrics);
 
@@ -193,8 +191,8 @@ namespace MushroomClassifier
             Console.WriteLine($"*       Average LogLossReduction: {logLossReductionAverage:#.###} ");
             Console.WriteLine($"*************************************************************************************************************");
 
-            
-           
+
+            Console.WriteLine("=============== Create and Train the Model ===============");
             var model = trainPipeline.Fit(trainDataView);
             Console.WriteLine("=============== End of training ===============");
             Console.WriteLine();
@@ -205,6 +203,7 @@ namespace MushroomClassifier
 
         public static MushroomModelPrediction PredictSingleResult(MLContext mlContext, ITransformer model, MushroomModelInput input) {
 
+            //Creating the prediction engine which takes data model input and output
             var predictEngine = mlContext.Model.CreatePredictionEngine<MushroomModelInput, MushroomModelPrediction>(model);
 
             var predOutput = predictEngine.Predict(input);
