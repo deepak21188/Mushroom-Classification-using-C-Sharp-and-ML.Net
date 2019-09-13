@@ -19,15 +19,22 @@ namespace MushroomClassifier
         static readonly string _dataFilePath = Path.Combine(@"C:\Users\dkumar\Documents\Deepak_ML\MushroomClassifier", "Data", "mushrooms.csv");
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello World!");
+            //Creating MLContxet model to be shared accross model building, validation and prediction process
             MLContext mlContext = new MLContext();
 
-            TrainTestData mushroomTrainTestData = LoadData(mlContext);
+            //Loading the data from csv files
+            //Splitting the dataset into train/test sets
+            TrainTestData mushroomTrainTestData = LoadData(mlContext, testDataFraction: 0.25);
 
+            //Creating data transformation pipeline which transforma the data a form acceptable by model
+            //Returns an object of type IEstimator<ITransformer>
             var pipeline = ProcessData(mlContext);
 
+            //passing the transformation pipeline and training dataset to crossvalidate and build the model
+            //returns the model object of type ITransformer 
             var trainedModel = BuildAndTrain(mlContext, pipeline, mushroomTrainTestData.TrainSet);
 
+            //Sample datainput for predicrtion
             var mushroomInput1 = new MushroomModelInput
             {
                 cap_shape = "x",
@@ -54,7 +61,7 @@ namespace MushroomClassifier
                 habitat="u"
             };
 
-
+            //Sample datainput for predicrtion
             var mushroomInput2 = new MushroomModelInput
             {
                 cap_shape = "b",
@@ -80,7 +87,8 @@ namespace MushroomClassifier
                 population = "s",
                 habitat = "m"
             };
-                        
+            
+            //passing trained model and sample input data to make single prediction 
             var result = PredictSingleResult(mlContext, trainedModel, mushroomInput2);
             
             Console.WriteLine("================================= Single Prediction Result ===============================");
@@ -94,11 +102,11 @@ namespace MushroomClassifier
 
         }
 
-        public static TrainTestData LoadData(MLContext mlContext)
+        public static TrainTestData LoadData(MLContext mlContext, double testDataFraction)
         {
             IDataView mushroomDataView = mlContext.Data.LoadFromTextFile<MushroomModelInput>(_dataFilePath, hasHeader: true, separatorChar: ',', allowSparse: false);
 
-            TrainTestData mushroomTrainTestData = mlContext.Data.TrainTestSplit(mushroomDataView, testFraction: 0.25);
+            TrainTestData mushroomTrainTestData = mlContext.Data.TrainTestSplit(mushroomDataView, testFraction: testDataFraction);
 
             return mushroomTrainTestData;
         }

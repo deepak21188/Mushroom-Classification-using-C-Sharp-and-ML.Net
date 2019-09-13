@@ -1895,11 +1895,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dkumar\\Documents\\Deepak_ML\\MushroomClassifier\\MushroomClassifier.csproj",
+      "projectUniqueName": "C:\\Users\\dkumar\\Documents\\Mushroom Classification using C# and ML.Net\\MushroomClassifier\\MushroomClassifier.csproj",
       "projectName": "MushroomClassifier",
-      "projectPath": "C:\\Users\\dkumar\\Documents\\Deepak_ML\\MushroomClassifier\\MushroomClassifier.csproj",
+      "projectPath": "C:\\Users\\dkumar\\Documents\\Mushroom Classification using C# and ML.Net\\MushroomClassifier\\MushroomClassifier.csproj",
       "packagesPath": "C:\\Users\\dkumar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dkumar\\Documents\\Deepak_ML\\MushroomClassifier\\obj\\",
+      "outputPath": "C:\\Users\\dkumar\\Documents\\Mushroom Classification using C# and ML.Net\\MushroomClassifier\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
