@@ -21,3 +21,31 @@ This dataset includes descriptions of hypothetical samples corresponding to 23 s
 |Label|
 |-----|
 |edible=e, poisonous=p|
+
+### Solution
+
+To solve this problem we peform the following steps
+
+#### Step 1: 
+* Load the dataset from csv data file
+* Divide it into training and testing sets in the ratio of 75:25
+
+#### Step 2:
+* Preprocess the data - Create an estimator and transform the data to the numeric vectrors so that it can be used by ML algorithm.
+* Choose and append the classification algorithm to the pipeline
+
+#### Step 3:
+* Crossvalidate the model to check its performance. Crossvalidation provide model's performance based on vairous evaluation metrics.
+
+#### Step 4:
+* Train the model by providing training dataset as input to the model.
+
+#### Step 5:
+* Once the model is trained with training data, it can be used/consumed to predict the classes/Labels of new data samples.
+
+
+
+ 
+
+
+
